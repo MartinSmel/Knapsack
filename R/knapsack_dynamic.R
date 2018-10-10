@@ -18,6 +18,10 @@ knapsack_dynamic <- function(x,W)
   n = nrow(x)
   m <- matrix(0, nrow=n, ncol=W+1)
   path <- as.data.frame(matrix(0,nrow = n, ncol = W+1))
+  for(i in 1:W)
+  {
+    path[[1,i]] <- list(0)
+  }
 
   for(i in 1:n)
   {
@@ -32,14 +36,15 @@ knapsack_dynamic <- function(x,W)
       else {
         m[[i,j]] <- max(m[[i-1,j]],m[[i-1,j-x$w[[i]]]] + x$v[[i]])
         if(m[[i-1,j]] < m[[i-1,j-x$w[[i]]]] + x$v[[i]])
-          path[[i,j]] <- 10*path[[i-1,j-x$w[[i]]]]+i
+      #    path[[i,j]] <- 10*path[[i-1,j-x$w[[i]]]]+i
+           path[[i,j]] <- list(list(unlist(path[[i-1,j-x$w[[i]]]], use.names = FALSE),i))
         else
           path[[i,j]] <- path[[i-1,j]]
       }
     }
   }
-  elements = as.numeric(strsplit(as.character(path[[n,W+1]]), "")[[1]])
-  return(list(value= round(m[[n,W+1]],0), elements = elements))
+  elements = suppressWarnings(as.numeric(strsplit(as.character(path[[n,W+1]]), "")[[1]]))
+  return(list(value= round(m[[n,W+1]],0), elements = elements[which(elements>0)]))
 }
 knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
 knapsack_dynamic(x = knapsack_objects[1:12,], W = 3500)
