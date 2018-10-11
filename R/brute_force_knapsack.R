@@ -30,5 +30,6 @@ brute_force_knapsack <- function(x, W)
   return(list(value=round(ideal_value,0), elements=which(elements>0)))
 }
 
+# system.time(brute_force_knapsack(knapsack_objects[1:8,], 3500))
 
 
