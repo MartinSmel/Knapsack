@@ -1,6 +1,6 @@
 #'Dynamic
 #'
-#'Solving Knapsack problem with dynamical programming
+#'Solving Knapsack problem with dynamic programming
 #'
 #'@param x data.frame
 #'@param W integer
