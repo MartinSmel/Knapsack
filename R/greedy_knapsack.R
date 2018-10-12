@@ -34,8 +34,9 @@ greedy_knapsack <- function(x,W)
     elements[[i]] <- x$ord[[i]]
     i<- i+1
   }
- # ord <- order(as.vector(unlist(elements)))
-#  elements <- elements[ord]
+
   return(list(value=round(value,0), elements=unlist(elements, use.names = FALSE) ))
 }
+
+
 
