@@ -47,6 +47,8 @@ knapsack_dynamic <- function(x,W)
   elements = suppressWarnings(as.numeric(strsplit(as.character(path[[n,W+1]]), "")[[1]]))
   return(list(value= round(m[[n,W+1]],0), elements = elements[which(elements>0)]))
 }
+
+
 knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
 knapsack_dynamic(x = knapsack_objects[1:12,], W = 3500)
 knapsack_dynamic(x = knapsack_objects[1:8,], W = 2000)
