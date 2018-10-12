@@ -34,3 +34,6 @@ greedy_knapsack <- function(x,W)
   return(list(value=round(value,0),elements=unlist(elements, use.names = FALSE)))
 }
 
+
+# system.time(greedy_knapsack(knapsack_objects[1:8,], 3500))
+

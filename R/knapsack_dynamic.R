@@ -51,3 +51,8 @@ knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
 knapsack_dynamic(x = knapsack_objects[1:12,], W = 3500)
 knapsack_dynamic(x = knapsack_objects[1:8,], W = 2000)
 knapsack_dynamic(x = knapsack_objects[1:12,], W = 2000)
+
+
+# system.time(knapsack_dynamic(knapsack_objects[1:8,], 3500))
+# user  system elapsed 
+# 6.12    0.02    6.14 
