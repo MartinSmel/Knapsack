@@ -16,6 +16,7 @@ brute_force_knapsack <- function(x, W)
   stopifnot(all(x$w>0))
   stopifnot(W>=0)
   ideal_value <- 0
+  x <- x[which(x$w < W), ]
   n = nrow(x)
   for (i in 1:(2^n-1)) 
   {
@@ -25,7 +26,7 @@ brute_force_knapsack <- function(x, W)
     if (ideal_value<value && weight < W)
     {
       ideal_value <- value
-      elements <- as.numeric(permutation[1:n])*1:n
+      elements <- as.numeric(permutation[1:n])*x$label
     }
   }
   return(list(value=round(ideal_value,0), elements=which(elements>0)))

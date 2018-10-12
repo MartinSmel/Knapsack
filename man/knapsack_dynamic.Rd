@@ -15,5 +15,5 @@ knapsack_dynamic(x, W)
 list of ideal value and elements that solves the problem
 }
 \description{
-Solving Knapsack problem with dynamical programming
+Solving Knapsack problem with dynamic programming
 }
