@@ -15,6 +15,7 @@ greedy_knapsack <- function(x,W)
   stopifnot(colnames(x)== list("w","v"))
   stopifnot(all(x$v>0))
   stopifnot(all(x$w>0))
+  stopifnot(W>=0)
   n = nrow(x)
   x$z <- x$v/x$w
   x$ord <- 1:n
