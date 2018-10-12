@@ -12,5 +12,7 @@ Encoding: UTF-8
 Suggests: knitr,
     rmarkdown,
     testthat,
-Imports: rlist
+Imports: rlist, Rcpp, utils
 VignetteBuilder: knitr
+LinkingTo: Rcpp
+Depends: R (>= 3.3)

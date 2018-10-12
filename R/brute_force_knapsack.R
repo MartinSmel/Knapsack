@@ -32,7 +32,7 @@ brute_force_knapsack <- function(x, W)
   return(list(value=round(ideal_value,0), elements=which(elements>0)))
 }
 
-
-
-
+#' @useDynLib Knapsack
+#' @importFrom Rcpp sourceCpp
+NULL
 

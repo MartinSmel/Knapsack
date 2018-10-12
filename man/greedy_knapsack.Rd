@@ -4,12 +4,14 @@
 \alias{greedy_knapsack}
 \title{Greedy}
 \usage{
-greedy_knapsack(x, W)
+greedy_knapsack(x, W, fast = FALSE)
 }
 \arguments{
 \item{x}{data.frame}
 
 \item{W}{integer}
+
+\item{fast}{logical}
 }
 \value{
 list of ideal value and elements that solves the problem
