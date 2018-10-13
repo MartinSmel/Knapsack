@@ -4,3 +4,7 @@
 .Ruserdata
 *.Rproj
 inst/doc
+*.o
+*.so
+*.dll
+*.cpp
