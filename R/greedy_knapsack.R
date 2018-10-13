@@ -27,6 +27,7 @@ greedy_knapsack <- function(x,W, fast = FALSE)
   x$ord <- 1:n
   x <- x[which(x$w < W), ]
   n = nrow(x)
+  
   if(fast == TRUE)
   {
     Rcpp::sourceCpp("src/division.cpp")
@@ -35,6 +36,8 @@ greedy_knapsack <- function(x,W, fast = FALSE)
   x$z <- z
   }
   else
+  {    }
+    
     x$z <- x$v/x$w
   cppFunction('double sumC(NumericVector x) {
   int n = x.size();
@@ -44,8 +47,9 @@ greedy_knapsack <- function(x,W, fast = FALSE)
   }
   return total;
 }')
+  
+  
   x$z <- x$v/x$w
-  #x$ord <- 1:n
   x <-x [with(x, order(-z)),]
   i<- 1
   weight <- 0
