@@ -17,5 +17,5 @@ greedy_knapsack(x, W, fast = FALSE)
 list of ideal value and elements that solves the problem
 }
 \description{
-Solving Knapsack problem with Greedy heuristic
+Solving Knapsack problem with Greedy heuristic also adding Rcpp code
 }

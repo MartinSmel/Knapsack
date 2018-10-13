@@ -7,6 +7,7 @@
 #'@param fast logical
 #'@return list of ideal value and elements that solves the problem
 #'@import Rcpp
+#'@import rlist
 #'@export
 
 
@@ -31,20 +32,22 @@ greedy_knapsack <- function(x,W, fast = FALSE)
   x$z <- z
   }
   else
-  {    }
+  {
     
-    x$z <- x$v/x$w
-  cppFunction('double sumC(NumericVector x) {
-  int n = x.size();
-  double total = 0;
-  for(int i = 0; i < n; ++i) {
-    total += x[i];
-  }
-  return total;
-}')
-  
+#   cppFunction('double sumC(NumericVector x) {
+#   int n = x.size();
+#   double total = 0;
+#   for(int i = 0; i < n; ++i) {
+#     total += x[i];
+#   }
+#   return total;
+# }')
   
   x$z <- x$v/x$w
+  }
+  
+  
+  
   x <-x [with(x, order(-z)),]
   i<- 1
   weight <- 0
