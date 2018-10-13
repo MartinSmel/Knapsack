@@ -10,6 +10,11 @@
 #'@export
 
 
+# libraries to be loaded at the beginning
+library(Rcpp)
+library(rlist)
+
+
 greedy_knapsack <- function(x,W, fast = FALSE)
 {
   stopifnot(is.data.frame(x) == T)
@@ -56,6 +61,4 @@ greedy_knapsack <- function(x,W, fast = FALSE)
   
   return(list(value=round(value,0), elements=unlist(elements, use.names = FALSE) ))
 }
-
-
 
