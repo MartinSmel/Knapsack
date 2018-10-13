@@ -10,11 +10,6 @@
 #'@export
 
 
-# libraries to be loaded at the beginning
-library(Rcpp)
-library(rlist)
-
-
 greedy_knapsack <- function(x,W, fast = FALSE)
 {
   stopifnot(is.data.frame(x) == T)
