@@ -1,6 +1,6 @@
 #'Greedy
 #'
-#'Solving Knapsack problem with Greedy heuristic
+#'Solving Knapsack problem with Greedy heuristic also adding Rcpp code
 #'
 #'@param x data.frame
 #'@param W integer
