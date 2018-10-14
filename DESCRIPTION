@@ -9,9 +9,7 @@ Description: Solving knapsack problem with different approaches
 License: What license is it under?
 RoxygenNote: 6.1.0
 Encoding: UTF-8
-Suggests: knitr,
-    rmarkdown,
-    testthat,
+Suggests: knitr, rmarkdown, testthat
 Imports: rlist, Rcpp, utils
 VignetteBuilder: knitr
 LinkingTo: Rcpp

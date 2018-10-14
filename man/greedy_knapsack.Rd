@@ -2,7 +2,7 @@
 % Please edit documentation in R/greedy_knapsack.R
 \name{greedy_knapsack}
 \alias{greedy_knapsack}
-\title{Greedy}
+\title{Greedy.}
 \usage{
 greedy_knapsack(x, W, fast = FALSE)
 }
@@ -14,8 +14,8 @@ greedy_knapsack(x, W, fast = FALSE)
 \item{fast}{logical}
 }
 \value{
-list of ideal value and elements that solves the problem
+list of ideal value and elements that solves the problem.
 }
 \description{
-Solving Knapsack problem with Greedy heuristic also adding Rcpp code
+Solving Knapsack problem with Greedy heuristic also adding Rcpp code.
 }

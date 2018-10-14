@@ -1,6 +1,6 @@
-#' Knapsack_objects
+#' Knapsack_objects.
 #'
-#' Creating a data set
+#' Creating a data set.
 #'
 #' @docType data
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/knapsack_dynamic.R
 \name{knapsack_dynamic}
 \alias{knapsack_dynamic}
-\title{Dynamic}
+\title{Dynamic.}
 \usage{
 knapsack_dynamic(x, W)
 }
@@ -12,8 +12,8 @@ knapsack_dynamic(x, W)
 \item{W}{integer}
 }
 \value{
-list of ideal value and elements that solves the problem
+list of ideal value and elements that solves the problem.
 }
 \description{
-Solving Knapsack problem with dynamic programming
+Solving Knapsack problem with dynamic programming.
 }

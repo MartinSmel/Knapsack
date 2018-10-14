@@ -1,11 +1,11 @@
-#'Greedy
+#'Greedy.
 #'
-#'Solving Knapsack problem with Greedy heuristic also adding Rcpp code
+#'Solving Knapsack problem with Greedy heuristic also adding Rcpp code.
 #'
 #'@param x data.frame
 #'@param W integer
 #'@param fast logical
-#'@return list of ideal value and elements that solves the problem
+#'@return list of ideal value and elements that solves the problem.
 #'@import Rcpp
 #'@import rlist
 #'@export

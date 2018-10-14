@@ -1,10 +1,10 @@
-#'Dynamic
+#'Dynamic.
 #'
-#'Solving Knapsack problem with dynamic programming
+#'Solving Knapsack problem with dynamic programming.
 #'
 #'@param x data.frame
 #'@param W integer
-#'@return list of ideal value and elements that solves the problem
+#'@return list of ideal value and elements that solves the problem.
 
 #'@export
 

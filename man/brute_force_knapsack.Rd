@@ -2,7 +2,7 @@
 % Please edit documentation in R/brute_force_knapsack.R
 \name{brute_force_knapsack}
 \alias{brute_force_knapsack}
-\title{Brute force}
+\title{Brute force.}
 \usage{
 brute_force_knapsack(x, W)
 }
@@ -12,8 +12,8 @@ brute_force_knapsack(x, W)
 \item{W}{integer}
 }
 \value{
-list of ideal value and elements that solves the problem
+list of ideal value and elements that solves the problem.
 }
 \description{
-Solving Knapsack problem with brute force approach
+Solving Knapsack problem with brute force approach.
 }

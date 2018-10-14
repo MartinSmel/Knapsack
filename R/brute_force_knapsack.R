@@ -1,10 +1,10 @@
-#'Brute force
+#'Brute force.
 #'
-#'Solving Knapsack problem with brute force approach
+#'Solving Knapsack problem with brute force approach.
 #'
 #'@param x data.frame
 #'@param W integer
-#'@return list of ideal value and elements that solves the problem
+#'@return list of ideal value and elements that solves the problem.
 #'@export
 
 brute_force_knapsack <- function(x, W)
@@ -32,7 +32,5 @@ brute_force_knapsack <- function(x, W)
   return(list(value=round(ideal_value,0), elements=which(elements>0)))
 }
 
-#' @useDynLib Knapsack
-#' @importFrom Rcpp sourceCpp
-NULL
+
 

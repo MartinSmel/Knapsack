@@ -3,12 +3,12 @@
 \docType{data}
 \name{knapsack_objects}
 \alias{knapsack_objects}
-\title{Knapsack_objects}
+\title{Knapsack_objects.}
 \format{An object of class \code{data.frame} with 2000 rows and 2 columns.}
 \usage{
 knapsack_objects
 }
 \description{
-Creating a data set
+Creating a data set.
 }
 \keyword{datasets}
