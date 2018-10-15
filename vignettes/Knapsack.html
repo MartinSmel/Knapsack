@@ -10,14 +10,52 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Vignette Author" />
+<meta name="author" content="Raymond Sseguya, Martin Smelik, Vinay" />
 
-<meta name="date" content="2018-10-09" />
+<meta name="date" content="2018-10-15" />
 
-<title>Vignette Title</title>
+<title>Vignette for 732A94 Lab6 Knapsack assignment Group 14</title>
 
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 
 
@@ -30,13 +68,52 @@
 
 
 
-<h1 class="title toc-ignore">Vignette Title</h1>
-<h4 class="author"><em>Vignette Author</em></h4>
-<h4 class="date"><em>2018-10-09</em></h4>
+<h1 class="title toc-ignore">Vignette for 732A94 Lab6 Knapsack assignment Group 14</h1>
+<h4 class="author"><em>Raymond Sseguya, Martin Smelik, Vinay</em></h4>
+<h4 class="date"><em>2018-10-15</em></h4>
 
 
 
+<p>The following 3 alogorithms based on different computational complexity were implemented to find the solution for the Knapsack problem 1. Brute force search 2. Dynamic programming 3. Greedy heuristic</p>
+<div id="algorithm-1-brute-force-search-computational-complexity-o2n" class="section level1">
+<h1>Algorithm 1: Brute force search (Computational complexity: O(2^n))</h1>
+<p>We create a function called brute_force_knapsack with argument x which is a matrix containing 2 rows, weights and its corresponding values. Argument W is the Knapsack capacity. The cumulative value of all possible combinations are computed one after the other and the best combination of elements, i.e. the one with maximum cumulative value whose cumulative weights is within the specified Knapsack weight capacity, are filled in the Knapsack. The function returns the cumulative value of the corresponding elements filled in the knapsack and the element(id) itself.</p>
+<p>Time taken to run the algoritm for n= 16 objects :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>,], <span class="dt">W =</span> <span class="dv">2000</span>))</code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.03    0.00    0.03</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>,], <span class="dt">W =</span> <span class="dv">3500</span>))</code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.12    0.00    0.12</code></pre>
+</div>
+<div id="algorithm-2-dynamic-programming-computational-complexity-own" class="section level1">
+<h1>Algorithm 2: Dynamic programming (Computational complexity: O(Wn))</h1>
+<p>Tabular method is used to solve the problem using Dynamic programming method.</p>
+<p>Time taken to run the algoritm for n= 500 objects :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">knapsack_dynamic</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>,], <span class="dt">W =</span> <span class="dv">2000</span>))
 
+<span class="kw">system.time</span>(<span class="kw">knapsack_dynamic</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>,], <span class="dt">W =</span> <span class="dv">3500</span>))</code></pre></div>
+</div>
+<div id="algorithm-3-greedy-heuristic-computational-complexity-onlogn" class="section level1">
+<h1>Algorithm 3: Greedy heuristic (Computational complexity: O(nlogn))</h1>
+<p>The ratios of each value to its corresponding weights are considered to fill up the knapsack. The elements with the higher ratio is put into the knapsack first.</p>
+<p>Time taken to run the algoritm for n= 1000000 objects :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">2000</span>), <span class="dt">fast=</span><span class="ot">FALSE</span>)
+
+<span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">3500</span>), <span class="dt">fast=</span><span class="ot">FALSE</span>)</code></pre></div>
+</div>
+<div id="implement-a-test-suite" class="section level1">
+<h1>1.1.5 Implement a test suite</h1>
+</div>
+<div id="profile-code" class="section level1">
+<h1>1.1.6 Profile code</h1>
+</div>
+<div id="implentation-in-rcpp" class="section level1">
+<h1>1.1.7 (*) Implentation in Rcpp</h1>
+</div>
+<div id="profiling-and-improving-existing-api-package" class="section level1">
+<h1>1.2 (*) Profiling and improving existing API package</h1>
+</div>
 
 
 
