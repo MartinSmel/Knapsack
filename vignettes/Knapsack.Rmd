@@ -91,27 +91,42 @@ system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500))
 
 The performance gain before parallelizing:
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval= FALSE}
 
 system.time(brute_force_knapsack(x = knapsack_objects[1:30,], W = 3000)) 
 
 ```
 
+```{r}
+
+#user    system   elapsed 
+#11.72     0.05     12.08 
+  
+
+```
 
 The performance gain after parallelizing:
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval = FALSE}
 
 system.time(brute_force_knapsack(x = knapsack_objects[1:30,], W = 3000, parallel = TRUE))
 
 ```
 
 
+```{r}
+
+#user    system   elapsed 
+#1.94     1.24     11.79 
+  
+
+```
+
    
 
 ## Algorithm 2: Dynamic programming (Computational complexity: O(Wn))
 
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r include=FALSE, eval=FALSE, message=FALSE, warning=FALSE}
 
 knapsack_dynamic <- function(x,W)
 {
@@ -167,7 +182,7 @@ Tabular method is used to solve the problem using Dynamic programming method.
 
 Time taken to run the algoritm for n= 500 objects :
 
-```{r message=FALSE, warning=FALSE, eval=TRUE, echo=TRUE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 2000))
 
 system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500))
@@ -175,23 +190,22 @@ system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500))
 ```
 
 
-For W=2000
 
-user  system elapsed 
-
-  84.57    0.02   84.69 
+```{r}
+#For W=2000
+#user    system   elapsed 
+#84.57     0.02     84.69 
   
-For W=3500
+#For W=3500
 
-user  system elapsed 
-
- 391.42    0.16  392.93 
-
+#user    system   elapsed 
+#391.42     0.16    392.93 
+```
 
 
 ## Algorithm 3: Greedy heuristic (Computational complexity: O(nlogn))
 
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r include=FALSE, eval=FALSE, message=FALSE, warning=FALSE}
 
 greedy_knapsack <- function(x,W)
 {
@@ -229,31 +243,30 @@ The ratios of each value to its corresponding weights are considered to fill up 
 Time taken to run the algoritm for n= 1000000 objects :
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
-system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 2000), fast=FALSE)
+system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 2000))
 
-system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 3500), fast=FALSE)
+system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 3500))
 
 ```
 
 
-For W=2000
-
-user  system elapsed 
-   0.18    0.01    0.20 
+```{r}
+#For W=2000
+#user    system   elapsed 
+#0.18      0.01      0.20 
    
-For W=3500
-
-user  system elapsed 
-   0.36    0.00    0.38
-   
+#For W=3500
+#user    system   elapsed 
+#0.36      0.00      0.38
+```   
 
 ## 1.1.5 Implement a test suite
 
 
-### For brute_force_knapsack
 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 # context("brute_force_knapsack")
 # 
@@ -299,10 +312,9 @@ user  system elapsed
 ```
 
 
-### For greedy_knapsack
 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 # context("greedy_knapsack")
 # 
@@ -353,10 +365,9 @@ user  system elapsed
 ```
 
 
-### For kanpsack_dynamic
 
 
-```{r  eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```{r  eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 
 # context("knapsack_dynamic")
 # 
@@ -402,10 +413,14 @@ user  system elapsed
 
 ```
 
-*** Our function does not return a better solution. ***
-
-
-### 1.1.6 Profile code
+We implemented the test suit also for dynamic approach and found out that the greedy algorithm returns the same solution as in test suit.
 
 
 
+## 1.1.6 Profile code
+
+To improve our code, we decided to check and exclude all the objects which weight was greater than W in all the algorithms.
+
+## 1.1.8 Parallelizing
+
+We included an option to parallelize the algorithm and the results can be seen above. It obviously helped especially for greater n
