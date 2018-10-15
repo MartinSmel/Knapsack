@@ -1,20 +1,4 @@
----
-title: "Vignette Title"
-author: "Vignette Author"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-The following 3 alogorithms based on different computational complexity were implemented to find the solution for the Knapsack problem
-1. Brute force search
-2. Dynamic programming
-3. Greedy heuristic
-
-
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+## ----include=FALSE, eval=TRUE, message=FALSE, warning=FALSE--------------
 
 set.seed(42)
 n <- 1000000
@@ -24,11 +8,8 @@ knapsack_objects <-
     v=runif(n = n, 0, 10000)
   )
 
-```
 
-# Algorithm 1: Brute force search (Computational complexity: O(2^n))
-
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+## ----include=FALSE, eval=TRUE, message=FALSE, warning=FALSE--------------
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
@@ -69,23 +50,14 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
 }
 
 
-```
 
-We create a function called brute_force_knapsack with argument x which is a matrix containing 2 rows, weights and its corresponding values. Argument W is the Knapsack capacity. The cumulative value of all possible combinations are computed one after the other and the best combination of elements, i.e. the one with maximum cumulative value whose cumulative weights is within the specified Knapsack weight capacity, are filled in the Knapsack. The function returns the cumulative value of the corresponding elements filled in the knapsack and the element(id) itself.
-
-Time taken to run the algoritm for n= 16 objects : 
-
-```{r message=FALSE, warning=FALSE}
+## ----message=FALSE, warning=FALSE----------------------------------------
 system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 2000))
 
 system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500))
 
-```
 
-
-# Algorithm 2: Dynamic programming (Computational complexity: O(Wn))
-
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+## ----include=FALSE, eval=TRUE, message=FALSE, warning=FALSE--------------
 
 knapsack_dynamic <- function(x,W)
 {
@@ -135,23 +107,14 @@ knapsack_dynamic <- function(x,W)
   return(list(value= round(m[[n,W+1]],0), elements=unlist(elements, use.names = FALSE) ))
 }
 
-```
 
-Tabular method is used to solve the problem using Dynamic programming method. 
+## ----message=FALSE, warning=FALSE, eval=FALSE----------------------------
+#  system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 2000))
+#  
+#  system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500))
+#  
 
-Time taken to run the algoritm for n= 500 objects :
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 2000))
-
-system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500))
-
-```
-
-
-# Algorithm 3: Greedy heuristic (Computational complexity: O(nlogn))
-
-```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+## ----include=FALSE, eval=TRUE, message=FALSE, warning=FALSE--------------
 
 greedy_knapsack <- function(x,W)
 {
@@ -182,20 +145,10 @@ greedy_knapsack <- function(x,W)
   return(list(value=round(value,0), elements=unlist(elements, use.names = FALSE) ))
 }
 
-```
 
-The ratios of each value to its corresponding weights are considered to fill up the knapsack. The elements with the higher ratio is put into the knapsack first. 
-
-Time taken to run the algoritm for n= 1000000 objects :
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 2000), fast=FALSE)
-
-system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 3500), fast=FALSE)
-
-```
-
-
-
-# 1.1.6 Profile code
+## ----message=FALSE, warning=FALSE, eval=FALSE----------------------------
+#  system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 2000), fast=FALSE)
+#  
+#  system.time(greedy_knapsack(x = knapsack_objects[1: 1000000,], W = 3500), fast=FALSE)
+#  
 
