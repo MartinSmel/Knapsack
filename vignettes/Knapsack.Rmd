@@ -9,14 +9,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The follwing 3 alogorithms based on different computational complexity were implemented to find the solution for the Knapsack problem
+The following 3 alogorithms based on different computational complexity were implemented to find the solution for the Knapsack problem
 1. Brute force search
 2. Dynamic programming
 3. Greedy heuristic
 
 # Generation of Knapsack objects.
 
-```{r setup, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 
 set.seed(42)
 n <- 2000
@@ -31,7 +31,7 @@ save(knapsack_objects, file="data/knapsack_objects.RData")
 
 # Algorithm 1: Brute force search (Computational complexity: O(2^n))
 
-```{r setup, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 
 brute_force_knapsack <- function(x, W)
 {
