@@ -21,7 +21,6 @@ greedy_knapsack <- function(x,W)
   x <- x[which(x$w < W), ]
   n = nrow(x)
   x$z <- x$v/x$w
-  #x$ord <- 1:n
   x <-x [with(x, order(-z)),]
   i<- 1
   weight <- 0
