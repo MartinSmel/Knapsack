@@ -10,11 +10,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Vignette Author" />
+<meta name="author" content="Raymond Sseguya, Martin Smelik, Vinay" />
 
-<meta name="date" content="2018-10-15" />
+<meta name="date" content="2018-10-16" />
 
-<title>Vignette Title</title>
+<title>Knapsack package Group 14</title>
 
 
 
@@ -68,42 +68,77 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<h1 class="title toc-ignore">Vignette Title</h1>
-<h4 class="author"><em>Vignette Author</em></h4>
-<h4 class="date"><em>2018-10-15</em></h4>
+<h1 class="title toc-ignore">Knapsack package Group 14</h1>
+<h4 class="author"><em>Raymond Sseguya, Martin Smelik, Vinay</em></h4>
+<h4 class="date"><em>2018-10-16</em></h4>
 
 
 
 <p>The following 3 alogorithms based on different computational complexity were implemented to find the solution for the Knapsack problem 1. Brute force search 2. Dynamic programming 3. Greedy heuristic</p>
-<div id="algorithm-1-brute-force-search-computational-complexity-o2n" class="section level1">
-<h1>Algorithm 1: Brute force search (Computational complexity: O(2^n))</h1>
+<div id="algorithm-1-brute-force-search-computational-complexity-o2n" class="section level2">
+<h2>Algorithm 1: Brute force search (Computational complexity: O(2^n))</h2>
 <p>We create a function called brute_force_knapsack with argument x which is a matrix containing 2 rows, weights and its corresponding values. Argument W is the Knapsack capacity. The cumulative value of all possible combinations are computed one after the other and the best combination of elements, i.e. the one with maximum cumulative value whose cumulative weights is within the specified Knapsack weight capacity, are filled in the Knapsack. The function returns the cumulative value of the corresponding elements filled in the knapsack and the element(id) itself.</p>
 <p>Time taken to run the algoritm for n= 16 objects :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>,], <span class="dt">W =</span> <span class="dv">2000</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##    0.06    0.00    0.13</code></pre>
+##    0.08    0.00    0.16</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>,], <span class="dt">W =</span> <span class="dv">3500</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##    0.13    0.00    0.13</code></pre>
+##    0.14    0.00    0.14</code></pre>
 </div>
-<div id="algorithm-2-dynamic-programming-computational-complexity-own" class="section level1">
-<h1>Algorithm 2: Dynamic programming (Computational complexity: O(Wn))</h1>
+<div id="parallelize-brute-force-search" class="section level2">
+<h2>(*) Parallelize brute force search</h2>
+<p>The performance gain before parallelizing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>,], <span class="dt">W =</span> <span class="dv">3000</span>)) </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#user    system   elapsed </span>
+<span class="co">#11.72     0.05     12.08 </span></code></pre></div>
+<p>The performance gain after parallelizing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">brute_force_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>,], <span class="dt">W =</span> <span class="dv">3000</span>, <span class="dt">parallel =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#user    system   elapsed </span>
+<span class="co">#1.94     1.24     11.79 </span></code></pre></div>
+</div>
+<div id="algorithm-2-dynamic-programming-computational-complexity-own" class="section level2">
+<h2>Algorithm 2: Dynamic programming (Computational complexity: O(Wn))</h2>
 <p>Tabular method is used to solve the problem using Dynamic programming method.</p>
 <p>Time taken to run the algoritm for n= 500 objects :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">knapsack_dynamic</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>,], <span class="dt">W =</span> <span class="dv">2000</span>))
 
 <span class="kw">system.time</span>(<span class="kw">knapsack_dynamic</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>,], <span class="dt">W =</span> <span class="dv">3500</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#For W=2000</span>
+<span class="co">#user    system   elapsed </span>
+<span class="co">#84.57     0.02     84.69 </span>
+  
+<span class="co">#For W=3500</span>
+
+<span class="co">#user    system   elapsed </span>
+<span class="co">#391.42     0.16    392.93 </span></code></pre></div>
 </div>
-<div id="algorithm-3-greedy-heuristic-computational-complexity-onlogn" class="section level1">
-<h1>Algorithm 3: Greedy heuristic (Computational complexity: O(nlogn))</h1>
+<div id="algorithm-3-greedy-heuristic-computational-complexity-onlogn" class="section level2">
+<h2>Algorithm 3: Greedy heuristic (Computational complexity: O(nlogn))</h2>
 <p>The ratios of each value to its corresponding weights are considered to fill up the knapsack. The elements with the higher ratio is put into the knapsack first.</p>
 <p>Time taken to run the algoritm for n= 1000000 objects :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">2000</span>), <span class="dt">fast=</span><span class="ot">FALSE</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">2000</span>))
 
-<span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">3500</span>), <span class="dt">fast=</span><span class="ot">FALSE</span>)</code></pre></div>
+<span class="kw">system.time</span>(<span class="kw">greedy_knapsack</span>(<span class="dt">x =</span> knapsack_objects[<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="dv">1000000</span>,], <span class="dt">W =</span> <span class="dv">3500</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#For W=2000</span>
+<span class="co">#user    system   elapsed </span>
+<span class="co">#0.18      0.01      0.20 </span>
+   
+<span class="co">#For W=3500</span>
+<span class="co">#user    system   elapsed </span>
+<span class="co">#0.36      0.00      0.38</span></code></pre></div>
 </div>
-<div id="profile-code" class="section level1">
-<h1>1.1.6 Profile code</h1>
+<div id="implement-a-test-suite" class="section level2">
+<h2>1.1.5 Implement a test suite</h2>
+<p>We implemented the test suit also for dynamic approach and found out that the greedy algorithm returns the same solution as in test suit.</p>
+</div>
+<div id="profile-code" class="section level2">
+<h2>1.1.6 Profile code</h2>
+<p>To improve our code, we decided to check and exclude all the objects which weight was greater than W in all the algorithms.</p>
+</div>
+<div id="parallelizing" class="section level2">
+<h2>1.1.8 Parallelizing</h2>
+<p>We included an option to parallelize the algorithm and the results can be seen above. It obviously helped especially for greater n</p>
 </div>
 
 
