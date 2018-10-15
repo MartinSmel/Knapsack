@@ -16,22 +16,25 @@ brute_force_knapsack <- function(x, W)
   stopifnot(all(x$w>0))
   stopifnot(W>=0)
   ideal_value <- 0
+  n = nrow(x)
+  x$label <- 1:n
   x <- x[which(x$w < W), ]
   n = nrow(x)
-  for (i in 1:(2^n-1)) 
+ 
+  permutation <- sapply(1:(2^n-1), function(i) { intToBits(i)[1:n]}, simplify="array")
+  weight <- sapply(1:(2^n-1), function(i) { sum(as.numeric(permutation[,i])*x$w) }, simplify="array")
+  value <- sapply(1:(2^n-1), function(i) { sum(as.numeric(permutation[,i])*x$v) }, simplify="array")
+  for (i in 1:(2^n-1))  
   {
-    permutation <- intToBits(i)
-    weight <- sum(as.numeric(permutation[1:n])*x$w)
-    value <- sum(as.numeric(permutation[1:n])*x$v)
-    if (ideal_value<value && weight < W)
+    if (ideal_value<value[[i]] && weight[[i]] < W)
     {
-      ideal_value <- value
-      elements <- as.numeric(permutation[1:n])*x$label
+      ideal_value <- value[[i]]
+      elements <- as.numeric(permutation[,i])*x$label
     }
   }
-  return(list(value=round(ideal_value,0), elements=which(elements>0)))
+  return(list(value=round(ideal_value,0), elements=elements[which(elements>0)])) 
+  
 }
-
 
 
 
