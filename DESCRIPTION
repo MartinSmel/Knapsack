@@ -12,5 +12,5 @@ Encoding: UTF-8
 Suggests: knitr,
     rmarkdown,
     testthat,
-Imports: rlist
+Imports: rlist, parallel
 VignetteBuilder: knitr

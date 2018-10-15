@@ -4,12 +4,14 @@
 \alias{brute_force_knapsack}
 \title{Brute force}
 \usage{
-brute_force_knapsack(x, W)
+brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
 \item{x}{data.frame}
 
 \item{W}{integer}
+
+\item{parallel}{logical}
 }
 \value{
 list of ideal value and elements that solves the problem
